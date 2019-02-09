@@ -3,7 +3,7 @@ A slider control which uses an emoji as the thumb.
 
 This is built as a web component, so it's usable anywhere with HTML.
 
-![Emoji slider](https://i.imgur.com/qNLw3ob.png)
+![Emoji Slider](https://i.imgur.com/hzzSolP.png)
 
 ## Usage
 
