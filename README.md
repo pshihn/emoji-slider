@@ -29,3 +29,11 @@ And then use it in HTML
 ```
 <emoji-slider emoji="😍"></emoji-slider>
 ```
+
+More about using web components [here](https://lit-element.polymer-project.org/guide/use).
+
+## Demo
+
+## License
+[MIT License](https://github.com/pshihn/emoji-slider/blob/master/LICENSE) (c) [Preet Shihn](https://twitter.com/preetster)
+
