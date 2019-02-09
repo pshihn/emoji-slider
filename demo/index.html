@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, minimum-scale=1, initial-scale=1, user-scalable=yes">
+  <title>Emoji Slider</title>
+  <meta name="description" content="A slider control using emojis">
+  <style>
+    body {
+      margin: 0;
+      font-family: system-ui, sans-serif;
+      font-weight: 400;
+      line-height: 1.5;
+    }
+
+    main {
+      max-width: 600px;
+      margin: 0 auto;
+      padding: 32px 16px;
+    }
+
+    label {
+      margin-top: 20px;
+      background: darkcyan;
+      display: inline-block;
+      padding: 2px 8px;
+      color: white;
+    }
+  </style>
+</head>
+
+<body>
+
+  <main>
+    <emoji-slider emoji="😍"></emoji-slider>
+    <label>0</label>
+  </main>
+
+  <script type="module" src="../bin/emoji-slider.js"></script>
+  <script>
+    const label = document.querySelector('label');
+    const slider = document.querySelector('emoji-slider');
+    slider.addEventListener('change', () => {
+      label.textContent = Math.round(slider.value * 100);
+    });
+  </script>
+
+</body>
+
+</html>

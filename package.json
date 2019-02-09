@@ -1,0 +1,36 @@
+{
+  "name": "emoji-slider",
+  "version": "0.1.0",
+  "description": "A slider control using emojis",
+  "main": "./bin/emoji-slider.js",
+  "module": "./bin/emoji-slider.js",
+  "types": "./bin/emoji-slider.d.ts",
+  "scripts": {
+    "build": "tsc",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/pshihn/emoji-slider.git"
+  },
+  "keywords": [
+    "slider",
+    "webcomponent",
+    "emoji",
+    "range"
+  ],
+  "author": "Preet Shihn <preetshihn@gmail.com>",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/pshihn/emoji-slider/issues"
+  },
+  "homepage": "https://github.com/pshihn/emoji-slider#readme",
+  "devDependencies": {
+    "tslint": "^5.12.1",
+    "typescript": "^3.3.3"
+  },
+  "dependencies": {
+    "@polymer/polymer": "^3.1.0",
+    "lit-element": "^2.0.1"
+  }
+}
