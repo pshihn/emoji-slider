@@ -7,6 +7,7 @@ var __decorate = (this && this.__decorate) || function (decorators, target, key,
 var __metadata = (this && this.__metadata) || function (k, v) {
     if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
 };
+var _a, _b;
 import { LitElement, html, css, property, customElement, query } from 'lit-element';
 import { addListener, removeListener } from '@polymer/polymer/lib/utils/gestures';
 let EmojiSlider = class EmojiSlider extends LitElement {
@@ -166,11 +167,11 @@ __decorate([
 ], EmojiSlider.prototype, "emoji", void 0);
 __decorate([
     query('#bar'),
-    __metadata("design:type", HTMLDivElement)
+    __metadata("design:type", typeof (_a = typeof HTMLDivElement !== "undefined" && HTMLDivElement) === "function" ? _a : Object)
 ], EmojiSlider.prototype, "trackBar", void 0);
 __decorate([
     query('#cursor'),
-    __metadata("design:type", HTMLDivElement)
+    __metadata("design:type", typeof (_b = typeof HTMLDivElement !== "undefined" && HTMLDivElement) === "function" ? _b : Object)
 ], EmojiSlider.prototype, "cursor", void 0);
 EmojiSlider = __decorate([
     customElement('emoji-slider')
