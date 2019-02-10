@@ -3,6 +3,8 @@ A slider control which uses an emoji as the thumb.
 
 This is built as a web component, so it's usable anywhere with HTML.
 
+[View live demo.](https://pshihn.github.io/emoji-slider/demo/)
+
 ![Emoji Slider](https://i.imgur.com/hzzSolP.png)
 
 ## Usage
@@ -32,7 +34,14 @@ And then use it in HTML
 
 More about using web components [here](https://lit-element.polymer-project.org/guide/use).
 
-## Demo
+## Styling
+The slider bar color be styles using CSS properties. For example,
+
+```css
+emoji-slider {
+  --emoji-slider-bar-color: red;
+}
+```
 
 ## License
 [MIT License](https://github.com/pshihn/emoji-slider/blob/master/LICENSE) (c) [Preet Shihn](https://twitter.com/preetster)
