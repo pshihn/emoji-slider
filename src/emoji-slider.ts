@@ -4,7 +4,7 @@ import { addListener, removeListener } from '@polymer/polymer/lib/utils/gestures
 @customElement('emoji-slider')
 export class EmojiSlider extends LitElement {
   @property() emoji?: string;
-  @property() step = 0.1;
+  @property({ type: Number }) step = 0.1;
 
   @query('#bar') private trackBar?: HTMLDivElement;
   @query('#cursor') private cursor?: HTMLDivElement;

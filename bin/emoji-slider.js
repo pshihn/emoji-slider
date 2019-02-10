@@ -208,7 +208,7 @@ __decorate([
     __metadata("design:type", String)
 ], EmojiSlider.prototype, "emoji", void 0);
 __decorate([
-    property(),
+    property({ type: Number }),
     __metadata("design:type", Object)
 ], EmojiSlider.prototype, "step", void 0);
 __decorate([
