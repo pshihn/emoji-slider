@@ -66,11 +66,12 @@ export class EmojiSlider extends LitElement {
   `;
 
   render(): TemplateResult {
+    const emojiChar = (this.emoji && this.emoji.length) ? [...this.emoji][0] : '';
     return html`
     <div id="bar">
       <div id="barLine"></div>
-      <div id="cursor" class="${this.emoji ? 'emoji' : 'noemoji'}">
-        <span>${this.emoji}</span>
+      <div id="cursor" class="${emojiChar ? 'emoji' : 'noemoji'}">
+        <span>${emojiChar}</span>
       </div>
     </div>
     `;
