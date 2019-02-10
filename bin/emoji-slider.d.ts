@@ -8,7 +8,7 @@ export declare class EmojiSlider extends LitElement {
     private upHandler;
     private downHandler;
     private trackHandler;
-    static styles: any;
+    static styles: import("lit-element").CSSResult;
     render(): TemplateResult;
     firstUpdated(): void;
     disconnectedCallback(): void;
