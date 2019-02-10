@@ -12,20 +12,21 @@ import { addListener, removeListener } from '@polymer/polymer/lib/utils/gestures
 let EmojiSlider = class EmojiSlider extends LitElement {
     constructor() {
         super(...arguments);
+        this.step = 0.1;
         this.pctValue = 0;
         this.dragging = false;
-        this.step = 0.1;
         this.upHandler = () => this.onUp();
         this.downHandler = (e) => this.onDown(e);
         this.trackHandler = (e) => this.onTrack(e);
         this.keyHandler = (e) => this.handleKeyDown(e);
     }
     render() {
+        const emojiChar = (this.emoji && this.emoji.length) ? [...this.emoji][0] : '';
         return html `
     <div id="bar">
       <div id="barLine"></div>
-      <div id="cursor" class="${this.emoji ? 'emoji' : 'noemoji'}">
-        <span>${this.emoji}</span>
+      <div id="cursor" class="${emojiChar ? 'emoji' : 'noemoji'}">
+        <span>${emojiChar}</span>
       </div>
     </div>
     `;
@@ -206,6 +207,10 @@ __decorate([
     property(),
     __metadata("design:type", String)
 ], EmojiSlider.prototype, "emoji", void 0);
+__decorate([
+    property({ type: Number }),
+    __metadata("design:type", Object)
+], EmojiSlider.prototype, "step", void 0);
 __decorate([
     query('#bar'),
     __metadata("design:type", HTMLDivElement)
