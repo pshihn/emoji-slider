@@ -4,13 +4,13 @@ import { addListener, removeListener } from '@polymer/polymer/lib/utils/gestures
 @customElement('emoji-slider')
 export class EmojiSlider extends LitElement {
   @property() emoji?: string;
+  @property() step = 0.1;
 
   @query('#bar') private trackBar?: HTMLDivElement;
   @query('#cursor') private cursor?: HTMLDivElement;
 
   private pctValue = 0;
   private dragging = false;
-  private step = 0.1;
   private upHandler = () => this.onUp();
   private downHandler = (e: Event) => this.onDown(e);
   private trackHandler = (e: Event) => this.onTrack(e);

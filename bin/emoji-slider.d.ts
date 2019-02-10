@@ -1,11 +1,11 @@
 import { LitElement, TemplateResult } from 'lit-element';
 export declare class EmojiSlider extends LitElement {
     emoji?: string;
+    step: number;
     private trackBar?;
     private cursor?;
     private pctValue;
     private dragging;
-    private step;
     private upHandler;
     private downHandler;
     private trackHandler;

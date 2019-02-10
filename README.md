@@ -40,6 +40,8 @@ More about using web components [here](https://lit-element.polymer-project.org/g
 
 **emoji:** The emoji character to use in the thumb of the slider. If not set, a circular thumb is used.
 
+**step:** The change in value when controlling the slider with keyboard e.g., *Right Arrow Key* will increate the value by 0.1. Default value of *step* is 0.1
+
 ## Styling
 The slider bar color be styles using CSS properties. For example,
 
