@@ -34,6 +34,12 @@ And then use it in HTML
 
 More about using web components [here](https://lit-element.polymer-project.org/guide/use).
 
+## Properties
+
+**value:** The numeric value of the slider between 0 and 1.
+
+**emoji:** The emoji character to use in the thumb of the slider. If not set, a circular thumb is used.
+
 ## Styling
 The slider bar color be styles using CSS properties. For example,
 
