@@ -10,14 +10,17 @@ export class EmojiSlider extends LitElement {
 
   private pctValue = 0;
   private dragging = false;
+  private step = 0.1;
   private upHandler = () => this.onUp();
   private downHandler = (e: Event) => this.onDown(e);
   private trackHandler = (e: Event) => this.onTrack(e);
+  private keyHandler = (e: KeyboardEvent) => this.handleKeyDown(e);
 
   static styles = css`
     :host {
       display: block;
       position: relative;
+      outline: none;
     }
     #bar {
       position: relative;
@@ -75,6 +78,12 @@ export class EmojiSlider extends LitElement {
 
   firstUpdated() {
     this.attachTrackHandlers();
+
+    // aria
+    this.setAttribute('role', 'slider');
+    this.setAttribute('aria-valuemax', '1');
+    this.setAttribute('aria-valuemin', '0');
+    this.tabIndex = +(this.getAttribute('tabindex') || 0);
   }
 
   disconnectedCallback() {
@@ -88,6 +97,7 @@ export class EmojiSlider extends LitElement {
     addListener(bar, 'up', this.upHandler);
     addListener(bar, 'down', this.downHandler);
     addListener(bar, 'track', this.trackHandler);
+    this.addEventListener('keydown', this.keyHandler);
   }
 
   private detachTrackHandlers() {
@@ -95,6 +105,7 @@ export class EmojiSlider extends LitElement {
     removeListener(bar, 'up', this.upHandler);
     removeListener(bar, 'down', this.downHandler);
     removeListener(bar, 'track', this.trackHandler);
+    this.removeEventListener('keydown', this.keyHandler);
   }
 
   private onUp() {
@@ -106,6 +117,7 @@ export class EmojiSlider extends LitElement {
     event.preventDefault();
     this.setValue(event.detail.x);
     this.cursor!.classList.add('active');
+    this.focus();
   }
 
   private onTrack(e: Event) {
@@ -164,11 +176,42 @@ export class EmojiSlider extends LitElement {
     return this.pctValue;
   }
 
-  get isDragging(): boolean {
-    return this.dragging;
-  }
-
   private updateValue() {
     if (this.cursor) this.cursor.style.left = `${this.pctValue * 100}%`;
+  }
+
+  private handleKeyDown(e: KeyboardEvent) {
+    switch (e.keyCode) {
+      case 38:
+      case 39: {
+        const newValue = Math.min(1, this.value + this.step);
+        if (newValue !== this.value) {
+          this.value = newValue;
+          this.fireEvent('change');
+        }
+        break;
+      }
+      case 37:
+      case 40: {
+        const newValue = Math.max(0, this.value - this.step);
+        if (newValue !== this.value) {
+          this.value = newValue;
+          this.fireEvent('change');
+        }
+        break;
+      }
+      case 36:
+        if (this.value !== 0) {
+          this.setValue(0);
+          this.fireEvent('change');
+        }
+        break;
+      case 35:
+        if (this.value !== 1) {
+          this.setValue(1);
+          this.fireEvent('change');
+        }
+        break;
+    }
   }
 }

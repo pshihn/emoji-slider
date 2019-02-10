@@ -14,9 +14,11 @@ let EmojiSlider = class EmojiSlider extends LitElement {
         super(...arguments);
         this.pctValue = 0;
         this.dragging = false;
+        this.step = 0.1;
         this.upHandler = () => this.onUp();
         this.downHandler = (e) => this.onDown(e);
         this.trackHandler = (e) => this.onTrack(e);
+        this.keyHandler = (e) => this.handleKeyDown(e);
     }
     render() {
         return html `
@@ -30,6 +32,11 @@ let EmojiSlider = class EmojiSlider extends LitElement {
     }
     firstUpdated() {
         this.attachTrackHandlers();
+        // aria
+        this.setAttribute('role', 'slider');
+        this.setAttribute('aria-valuemax', '1');
+        this.setAttribute('aria-valuemin', '0');
+        this.tabIndex = +(this.getAttribute('tabindex') || 0);
     }
     disconnectedCallback() {
         super.disconnectedCallback();
@@ -41,12 +48,14 @@ let EmojiSlider = class EmojiSlider extends LitElement {
         addListener(bar, 'up', this.upHandler);
         addListener(bar, 'down', this.downHandler);
         addListener(bar, 'track', this.trackHandler);
+        this.addEventListener('keydown', this.keyHandler);
     }
     detachTrackHandlers() {
         const bar = this.trackBar;
         removeListener(bar, 'up', this.upHandler);
         removeListener(bar, 'down', this.downHandler);
         removeListener(bar, 'track', this.trackHandler);
+        this.removeEventListener('keydown', this.keyHandler);
     }
     onUp() {
         this.trackEnd();
@@ -56,6 +65,7 @@ let EmojiSlider = class EmojiSlider extends LitElement {
         event.preventDefault();
         this.setValue(event.detail.x);
         this.cursor.classList.add('active');
+        this.focus();
     }
     onTrack(e) {
         const event = e;
@@ -105,18 +115,50 @@ let EmojiSlider = class EmojiSlider extends LitElement {
     get value() {
         return this.pctValue;
     }
-    get isDragging() {
-        return this.dragging;
-    }
     updateValue() {
         if (this.cursor)
             this.cursor.style.left = `${this.pctValue * 100}%`;
+    }
+    handleKeyDown(e) {
+        switch (e.keyCode) {
+            case 38:
+            case 39: {
+                const newValue = Math.min(1, this.value + this.step);
+                if (newValue !== this.value) {
+                    this.value = newValue;
+                    this.fireEvent('change');
+                }
+                break;
+            }
+            case 37:
+            case 40: {
+                const newValue = Math.max(0, this.value - this.step);
+                if (newValue !== this.value) {
+                    this.value = newValue;
+                    this.fireEvent('change');
+                }
+                break;
+            }
+            case 36:
+                if (this.value !== 0) {
+                    this.setValue(0);
+                    this.fireEvent('change');
+                }
+                break;
+            case 35:
+                if (this.value !== 1) {
+                    this.setValue(1);
+                    this.fireEvent('change');
+                }
+                break;
+        }
     }
 };
 EmojiSlider.styles = css `
     :host {
       display: block;
       position: relative;
+      outline: none;
     }
     #bar {
       position: relative;

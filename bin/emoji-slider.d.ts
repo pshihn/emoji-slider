@@ -5,9 +5,11 @@ export declare class EmojiSlider extends LitElement {
     private cursor?;
     private pctValue;
     private dragging;
+    private step;
     private upHandler;
     private downHandler;
     private trackHandler;
+    private keyHandler;
     static styles: import("lit-element").CSSResult;
     render(): TemplateResult;
     firstUpdated(): void;
@@ -23,6 +25,6 @@ export declare class EmojiSlider extends LitElement {
     private setValue;
     private fireEvent;
     value: number;
-    readonly isDragging: boolean;
     private updateValue;
+    private handleKeyDown;
 }
