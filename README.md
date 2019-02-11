@@ -42,6 +42,9 @@ More about using web components [here](https://lit-element.polymer-project.org/g
 
 **step:** The change in value when controlling the slider with keyboard e.g., *Right Arrow Key* will increate the value by 0.1. Default value of *step* is 0.1
 
+## Events
+**change** event is fired as the slider value changes. the current value can be obtained from the event details: `event.detail.value`
+
 ## Styling
 The slider bar color (and active color) be styled using CSS properties. For example,
 
