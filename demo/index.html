@@ -27,14 +27,26 @@
       padding: 2px 8px;
       color: white;
     }
+
+    .styledSlider {
+      --emoji-slider-bar-active-color: red;
+      --emoji-slider-bar-color: green;
+    }
   </style>
 </head>
 
 <body>
 
   <main>
-    <emoji-slider emoji="😍"></emoji-slider>
-    <label>0</label>
+    <section>
+      <emoji-slider emoji="😍"></emoji-slider>
+      <label>0</label>
+    </section>
+
+    <section style="margin-top: 60px;">
+      <div style="margin-bottom: 20px;">Customizes bar colors: </div>
+      <emoji-slider emoji="💖" class="styledSlider"></emoji-slider>
+    </section>
   </main>
 
   <script type="module" src="../bin/emoji-slider.min.js"></script>

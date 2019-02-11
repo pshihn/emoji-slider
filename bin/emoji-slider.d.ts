@@ -4,6 +4,7 @@ export declare class EmojiSlider extends LitElement {
     step: number;
     private trackBar?;
     private cursor?;
+    private valueBar?;
     private pctValue;
     private dragging;
     private upHandler;

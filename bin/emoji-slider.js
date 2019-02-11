@@ -24,7 +24,9 @@ let EmojiSlider = class EmojiSlider extends LitElement {
         const emojiChar = (this.emoji && this.emoji.length) ? [...this.emoji][0] : '';
         return html `
     <div id="bar">
-      <div id="barLine"></div>
+      <div id="barLine">
+        <div id="valueBar"></div>
+      </div>
       <div id="cursor" class="${emojiChar ? 'emoji' : 'noemoji'}">
         <span>${emojiChar}</span>
       </div>
@@ -117,8 +119,12 @@ let EmojiSlider = class EmojiSlider extends LitElement {
         return this.pctValue;
     }
     updateValue() {
+        const offset = `${this.pctValue * 100}%`;
         if (this.cursor)
-            this.cursor.style.left = `${this.pctValue * 100}%`;
+            this.cursor.style.left = offset;
+        if (this.valueBar) {
+            this.valueBar.style.width = offset;
+        }
     }
     handleKeyDown(e) {
         switch (e.keyCode) {
@@ -169,6 +175,14 @@ EmojiSlider.styles = css `
     #barLine {
       background: var(--emoji-slider-bar-color, #e5e5e5);
       height: 4px;
+      position: relative;
+    }
+    #valueBar {
+      background: var(--emoji-slider-bar-active-color, #2196f3);
+      position: absolute;
+      left: 0;
+      top: 0;
+      height: 100%;
     }
     #cursor {
       position: absolute;
@@ -219,6 +233,10 @@ __decorate([
     query('#cursor'),
     __metadata("design:type", HTMLDivElement)
 ], EmojiSlider.prototype, "cursor", void 0);
+__decorate([
+    query('#valueBar'),
+    __metadata("design:type", HTMLDivElement)
+], EmojiSlider.prototype, "valueBar", void 0);
 EmojiSlider = __decorate([
     customElement('emoji-slider')
 ], EmojiSlider);

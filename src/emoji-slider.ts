@@ -8,6 +8,7 @@ export class EmojiSlider extends LitElement {
 
   @query('#bar') private trackBar?: HTMLDivElement;
   @query('#cursor') private cursor?: HTMLDivElement;
+  @query('#valueBar') private valueBar?: HTMLDivElement;
 
   private pctValue = 0;
   private dragging = false;
@@ -30,6 +31,14 @@ export class EmojiSlider extends LitElement {
     #barLine {
       background: var(--emoji-slider-bar-color, #e5e5e5);
       height: 4px;
+      position: relative;
+    }
+    #valueBar {
+      background: var(--emoji-slider-bar-active-color, #2196f3);
+      position: absolute;
+      left: 0;
+      top: 0;
+      height: 100%;
     }
     #cursor {
       position: absolute;
@@ -69,7 +78,9 @@ export class EmojiSlider extends LitElement {
     const emojiChar = (this.emoji && this.emoji.length) ? [...this.emoji][0] : '';
     return html`
     <div id="bar">
-      <div id="barLine"></div>
+      <div id="barLine">
+        <div id="valueBar"></div>
+      </div>
       <div id="cursor" class="${emojiChar ? 'emoji' : 'noemoji'}">
         <span>${emojiChar}</span>
       </div>
@@ -178,7 +189,12 @@ export class EmojiSlider extends LitElement {
   }
 
   private updateValue() {
-    if (this.cursor) this.cursor.style.left = `${this.pctValue * 100}%`;
+    const offset = `${this.pctValue * 100}%`
+    if (this.cursor)
+      this.cursor.style.left = offset;
+    if (this.valueBar) {
+      this.valueBar.style.width = offset;
+    }
   }
 
   private handleKeyDown(e: KeyboardEvent) {
