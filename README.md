@@ -5,7 +5,7 @@ This is built as a web component, so it's usable anywhere with HTML.
 
 [View live demo.](https://pshihn.github.io/emoji-slider/demo/)
 
-![Emoji Slider](https://i.imgur.com/hzzSolP.png)
+![Emoji Slider](https://i.imgur.com/RyyBB6B.png)
 
 ## Usage
 
