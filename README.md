@@ -5,7 +5,7 @@ This is built as a web component, so it's usable anywhere with HTML.
 
 [View live demo.](https://pshihn.github.io/emoji-slider/demo/)
 
-![Emoji Slider](https://i.imgur.com/hzzSolP.png)
+![Emoji Slider](https://i.imgur.com/RyyBB6B.png)
 
 ## Usage
 
@@ -41,6 +41,9 @@ More about using web components [here](https://lit-element.polymer-project.org/g
 **emoji:** The emoji character to use in the thumb of the slider. If not set, a circular thumb is used.
 
 **step:** The change in value when controlling the slider with keyboard e.g., *Right Arrow Key* will increate the value by 0.1. Default value of *step* is 0.1
+
+## Events
+**change** event is fired as the slider value changes. the current value can be obtained from the event details: `event.detail.value`
 
 ## Styling
 The slider bar color (and active color) be styled using CSS properties. For example,

@@ -32,6 +32,10 @@
       --emoji-slider-bar-active-color: red;
       --emoji-slider-bar-color: green;
     }
+
+    .rangeSlider {
+      --emoji-slider-bar-active-color: #e5e5e5;
+    }
   </style>
 </head>
 
@@ -47,6 +51,11 @@
       <div style="margin-bottom: 20px;">Customized bar colors: </div>
       <emoji-slider emoji="💖" class="styledSlider"></emoji-slider>
     </section>
+
+    <section style="margin-top: 60px;">
+      <div style="margin-bottom: 20px;">Change emoji by value: </div>
+      <emoji-slider id="rangeSlider" emoji="💖" class="rangeSlider"></emoji-slider>
+    </section>
   </main>
 
   <script type="module" src="../bin/emoji-slider.min.js"></script>
@@ -55,6 +64,20 @@
     const slider = document.querySelector('emoji-slider');
     slider.addEventListener('change', () => {
       label.textContent = Math.round(slider.value * 100);
+    });
+
+    const rangeSlider = document.querySelector('#rangeSlider');
+    rangeSlider.addEventListener('change', () => {
+      const v = rangeSlider.value;
+      if (v < 0.25) {
+        rangeSlider.emoji = '💔';
+      } else if (v < 0.5) {
+        rangeSlider.emoji = '💜';
+      } else if (v < 0.75) {
+        rangeSlider.emoji = '💗';
+      } else {
+        rangeSlider.emoji = '💖';
+      }
     });
   </script>
 
