@@ -26,11 +26,11 @@
   },
   "homepage": "https://github.com/pshihn/emoji-slider#readme",
   "devDependencies": {
-    "tslint": "^5.12.1",
-    "typescript": "^3.3.3"
+    "tslint": "^5.18.0",
+    "typescript": "^3.5.3"
   },
   "dependencies": {
-    "@polymer/polymer": "^3.1.0",
-    "lit-element": "^2.0.1"
+    "@polymer/polymer": "^3.3.0",
+    "lit-element": "^2.2.1"
   }
 }
