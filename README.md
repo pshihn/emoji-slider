@@ -9,7 +9,7 @@ This is built as a web component, so it's usable anywhere with HTML.
 
 ## Usage
 
-Get the compoent 
+Get the compoent
 
 ```
 npm install --save emoji-slider
@@ -46,15 +46,20 @@ More about using web components [here](https://lit-element.polymer-project.org/g
 **change** event is fired as the slider value changes. the current value can be obtained from the event details: `event.detail.value`
 
 ## Styling
-The slider bar color (and active color) be styled using CSS properties. For example,
+The following elements can be modified:
 
 ```css
 emoji-slider {
-  --emoji-slider-bar-color: red;
-  --emoji-slider-bar-active-color: green;
+  --emoji-slider-barLine-color: #e5e5e5;
+  --emoji-slider-barLine-height: 4px;
+  --emoji-slider-barLine-border-radius: 5px;
+  --emoji-slider-valueBar-active-color: #2196f3;
+  --emoji-slider-cursor-color: #d32f2f;
+  --emoji-slider-cursor-width: 16px;
+  --emoji-slider-cursor-height: 16px;
+  --emoji-slider-font-size: 24px;
 }
 ```
 
 ## License
 [MIT License](https://github.com/pshihn/emoji-slider/blob/master/LICENSE) (c) [Preet Shihn](https://twitter.com/preetster)
-
