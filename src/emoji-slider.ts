@@ -26,15 +26,16 @@ export class EmojiSlider extends LitElement {
     #bar {
       position: relative;
       cursor: pointer;
-      padding: 10px 0;
+      padding: var(--emoji-slider-bar-padding, 10px 0);
     }
     #barLine {
-      background: var(--emoji-slider-bar-color, #e5e5e5);
-      height: 4px;
+      background: var(--emoji-slider-barLine-color, #e5e5e5);
+      height: var(--emoji-slider-barLine-height, 4px);
       position: relative;
+      border-radius: var(--emoji-slider-barLine-border-radius, 5px);
     }
     #valueBar {
-      background: var(--emoji-slider-bar-active-color, #2196f3);
+      background: var(--emoji-slider-valueBar-active-color, #2196f3);
       position: absolute;
       left: 0;
       top: 0;
@@ -50,8 +51,8 @@ export class EmojiSlider extends LitElement {
     #cursor.noemoji {
       background: var(--emoji-slider-cursor-color, #d32f2f);
       border-radius: 10px;
-      width: 16px;
-      height: 16px;
+      width: var(--emoji-slider-cursor-width, 16px);
+      height: var(--emoji-slider-cursor-height, 16px);
     }
     #cursor.noemoji span {
       display: none;
