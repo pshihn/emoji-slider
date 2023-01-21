@@ -2,6 +2,7 @@ import { LitElement, TemplateResult } from 'lit-element';
 export declare class EmojiSlider extends LitElement {
     emoji?: string;
     step: number;
+    cssOverride?: string;
     private trackBar?;
     private cursor?;
     private valueBar?;
@@ -25,7 +26,8 @@ export declare class EmojiSlider extends LitElement {
     private trackX;
     private setValue;
     private fireEvent;
-    value: number;
+    set value(v: number);
+    get value(): number;
     private updateValue;
     private handleKeyDown;
 }
