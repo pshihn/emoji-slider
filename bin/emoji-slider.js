@@ -30,6 +30,9 @@ let EmojiSlider = class EmojiSlider extends LitElement {
       <div id="cursor" class="${emojiChar ? 'emoji' : 'noemoji'}">
         <span>${emojiChar}</span>
       </div>
+      <style>
+        ${this.cssOverride}
+      </style>
     </div>
     `;
     }
@@ -225,6 +228,10 @@ __decorate([
     property({ type: Number }),
     __metadata("design:type", Object)
 ], EmojiSlider.prototype, "step", void 0);
+__decorate([
+    property(),
+    __metadata("design:type", String)
+], EmojiSlider.prototype, "cssOverride", void 0);
 __decorate([
     query('#bar'),
     __metadata("design:type", HTMLDivElement)

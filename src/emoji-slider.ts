@@ -5,6 +5,7 @@ import { addListener, removeListener } from '@polymer/polymer/lib/utils/gestures
 export class EmojiSlider extends LitElement {
   @property() emoji?: string;
   @property({ type: Number }) step = 0.1;
+  @property() cssOverride?: string;
 
   @query('#bar') private trackBar?: HTMLDivElement;
   @query('#cursor') private cursor?: HTMLDivElement;
@@ -84,10 +85,13 @@ export class EmojiSlider extends LitElement {
       <div id="cursor" class="${emojiChar ? 'emoji' : 'noemoji'}">
         <span>${emojiChar}</span>
       </div>
+      <style>
+        ${this.cssOverride}
+      </style>
     </div>
     `;
   }
-
+  
   firstUpdated() {
     this.attachTrackHandlers();
 
